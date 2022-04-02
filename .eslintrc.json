@@ -24,10 +24,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "react/jsx-filename-extension": [
-      1,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-one-expression-per-line": "off",
     "import/extensions": [
       "error",
@@ -44,11 +41,15 @@
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
-        "allowExpressions": true
+        "allowExpressions": true,
+        "allowConciseArrowFunctionExpressionsStartingWithVoid": true
       }
     ],
     "no-shadow": "off",
     "linebreak-style": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "semi": "off",
+    "jsx-quotes": ["error", "prefer-double"],
+    "comma-dangle": ["error", "never"]
   }
 }
