@@ -49,6 +49,7 @@
     "no-shadow": "off",
     "linebreak-style": "off",
     "import/prefer-default-export": "off",
+    "react/function-component-definition": "off",
     "semi": "off",
     "jsx-quotes": ["error", "prefer-double"],
     "comma-dangle": ["error", "never"]
