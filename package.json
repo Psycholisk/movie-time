@@ -20,10 +20,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:ci": "env CI=true react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "prettier:write": "prettier --write \"**/*.+(js|jsx|json|css|md|ts|tsx|less)\"",
     "prettier:check": "prettier --check \"**/*.+(js|jsx|json|css|md|ts|tsx|less)\"",
-    "lint": "eslint . --ext ts --ext tsx --ext js"
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -42,11 +44,13 @@
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
+    "husky": "^7.0.4",
     "prettier": "2.6.1"
   }
 }
