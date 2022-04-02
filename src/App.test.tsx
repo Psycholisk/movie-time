@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import App from './App'
-import { defaultTheme } from './styles/theme'
+import { defaultTheme } from './themes/default.theme'
 
 test('renders learn react link', () => {
   render(

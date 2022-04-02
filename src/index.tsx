@@ -6,7 +6,8 @@ import { ThemeProvider } from 'styled-components'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { defaultTheme } from './styles/theme'
+import { defaultTheme } from './themes/default.theme'
+import { BaseStyles } from './styles/base.styles'
 
 const rootElement = document.getElementById('root') as HTMLElement
 const root = createRoot(rootElement)
@@ -15,6 +16,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
+        <BaseStyles />
         <App />
       </ThemeProvider>
     </BrowserRouter>

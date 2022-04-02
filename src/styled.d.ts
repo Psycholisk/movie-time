@@ -16,5 +16,6 @@ declare module 'styled-components' {
       lightGrey: string
       [key: string]: string
     }
+    space: (units: number) => number
   }
 }

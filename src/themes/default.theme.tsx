@@ -1,5 +1,7 @@
 import { DefaultTheme } from 'styled-components'
 
+const SPACE_UNIT = 8
+
 export const defaultTheme: DefaultTheme = {
   fonts: {
     primary: 'Roboto',
@@ -13,4 +15,5 @@ export const defaultTheme: DefaultTheme = {
   colors: {
     lightGrey: 'lightgrey',
   },
+  space: (units: number) => units * SPACE_UNIT,
 }
