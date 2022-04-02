@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { CenteredContent } from '../styles/styled-elements'
+import { CenteredContent } from '../../styles/styled-elements'
 
 const HeaderContainer = styled(CenteredContent).attrs({ as: 'header' })`
   height: 100px;
@@ -79,8 +79,10 @@ const SearchButton = styled.div`
 const Header = (): JSX.Element => (
   <HeaderContainer>
     <ContentWrapper>
-      <Logo to="/">MovieTime</Logo>
-      <SearchButton>
+      <Logo to="/" title="MovieTime">
+        MovieTime
+      </Logo>
+      <SearchButton data-testId="search-button">
         <img alt="search" src="../../images/loop-icon.svg" />
       </SearchButton>
     </ContentWrapper>
