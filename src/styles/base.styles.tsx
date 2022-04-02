@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 /**
  * Global styles that resets css and sets the base elements styling
  */
-export const BaseStyles = createGlobalStyle`
+const BaseStyles = createGlobalStyle`
 * {
   padding: 0;
   margin: 0;
@@ -19,7 +19,8 @@ body {
   font-size: 1.4rem;
   height: 100%;
   min-width: 320px;
-  background-color: white;
+  background-color: ${(p) => p.theme.colors.negativeSpace};
+  color: ${(p) => p.theme.colors.primaryText};
   position: relative;
 }
 
@@ -65,3 +66,4 @@ img {
   outline: 0;
 }
 `
+export default BaseStyles

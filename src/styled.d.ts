@@ -13,9 +13,20 @@ declare module 'styled-components' {
       bold: number
     }
     colors: {
-      lightGrey: string
+      negativeSpace: string
+      primaryText: string
+      secondaryText: string
+      dimmedWhite: string
       [key: string]: string
     }
-    space: (units: number) => number
+    breakpoints: {
+      mobile: number
+      tablet: number
+      laptop: number
+      mediumScreen: number
+      largeScreen: number
+      wideScreen: number
+    }
+    space: (units: number) => string
   }
 }

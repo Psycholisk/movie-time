@@ -13,7 +13,19 @@ export const defaultTheme: DefaultTheme = {
     bold: 700,
   },
   colors: {
-    lightGrey: 'lightgrey',
+    primaryText: 'white',
+    secondaryText: '#737782',
+    dimmedWhite: '#5F636D',
+    negativeSpace: '#141823',
   },
-  space: (units: number) => units * SPACE_UNIT,
+  breakpoints: {
+    mobile: 576,
+    tablet: 768,
+    laptop: 900,
+    mediumScreen: 1200,
+    largeScreen: 1400,
+    wideScreen: 1900,
+  },
+
+  space: (units: number) => `${units * SPACE_UNIT}px`,
 }

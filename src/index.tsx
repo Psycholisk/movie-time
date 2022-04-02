@@ -7,7 +7,7 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { defaultTheme } from './themes/default.theme'
-import { BaseStyles } from './styles/base.styles'
+import { BaseStyles } from './styles'
 
 const rootElement = document.getElementById('root') as HTMLElement
 const root = createRoot(rootElement)
