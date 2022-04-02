@@ -5,7 +5,7 @@ import MainRouter from './router'
 import './App.css'
 
 const Container = styled.div`
-  background: lightgrey;
+  background: ${(props) => props.theme.colors.lightGrey};
 `
 
 function App(): JSX.Element {

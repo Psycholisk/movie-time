@@ -1,10 +1,12 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
+import { ThemeProvider } from 'styled-components'
 
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import { defaultTheme } from './styles/theme'
 
 const rootElement = document.getElementById('root') as HTMLElement
 const root = createRoot(rootElement)
@@ -12,7 +14,9 @@ const root = createRoot(rootElement)
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ThemeProvider theme={defaultTheme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

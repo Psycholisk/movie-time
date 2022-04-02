@@ -37,7 +37,6 @@
         "tsx": "never"
       }
     ],
-    "object-curly-newline": ["error", "never"],
     "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/explicit-function-return-type": [
       "error",
@@ -47,11 +46,12 @@
       }
     ],
     "no-shadow": "off",
+    "comma-dangle": "off",
     "linebreak-style": "off",
+    "object-curly-newline": "off",
     "import/prefer-default-export": "off",
     "react/function-component-definition": "off",
     "semi": "off",
-    "jsx-quotes": ["error", "prefer-double"],
-    "comma-dangle": ["error", "never"]
+    "jsx-quotes": ["error", "prefer-double"]
   }
 }
