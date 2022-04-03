@@ -4,7 +4,7 @@ const SPACE_UNIT = 8
 
 export const defaultTheme: DefaultTheme = {
   fonts: {
-    primary: 'Roboto',
+    primary: `'Montserrat', sans-serif`,
   },
   fontWeights: {
     light: 300,
@@ -16,7 +16,7 @@ export const defaultTheme: DefaultTheme = {
     primaryText: '#e4f0ff',
     secondaryText: '#8c9097',
     complementary: '#D6A419',
-    dimmedWhite: '#5F636D',
+    dimmedWhite: '#aab3be',
     negativeSpace: '#141823',
   },
   breakpoints: {

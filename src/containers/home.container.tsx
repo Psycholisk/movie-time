@@ -1,11 +1,13 @@
 import React from 'react'
 
-import { Banner, Section } from '../components'
+import { Banner, Movie, Section } from '../components'
 
 const HomeContainer = (): JSX.Element => (
   <>
     <Banner />
-    <Section title="My Movies">Section Content</Section>
+    <Section title="My Movies">
+      <Movie />
+    </Section>
   </>
 )
 
