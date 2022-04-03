@@ -112,7 +112,7 @@ const IconAttribute = styled.span`
 const Movie = (): JSX.Element => (
   <Container>
     <ImageFrame>
-      <CoverImage src="../../images/inventing-anna.jpg" />
+      <CoverImage src="../../images/inventing-anna.jpg" data-testId="movie-poster" />
     </ImageFrame>
     <Content>
       <RatedTag>TV-MA</RatedTag>
@@ -121,12 +121,12 @@ const Movie = (): JSX.Element => (
           <img alt="Hourglass" src="../../images/hourglass-icon.svg" />
           136 min
         </IconAttribute>
-        <IconAttribute>
+        <IconAttribute data-testId="movie-imdb-rating">
           <img alt="Hourglass" src="../../images/star-icon.svg" />
           6.9
         </IconAttribute>
       </Attributes>
-      <Title>Inventing Anna</Title>
+      <Title data-testId="movie-title">Inventing Anna</Title>
     </Content>
   </Container>
 )
