@@ -8,7 +8,7 @@ describe('Movie Component', () => {
   it('renders required movie attributes', () => {
     const { getByTestId } = render(
       <TestComponentWrapper>
-        <Movie />
+        <Movie id="123" />
       </TestComponentWrapper>
     )
 

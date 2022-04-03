@@ -16,7 +16,7 @@ export const defaultTheme: DefaultTheme = {
     primaryText: '#e4f0ff',
     secondaryText: '#8c9097',
     complementary: '#D6A419',
-    dimmedWhite: '#aab3be',
+    dimmedWhite: '#bec6cf',
     negativeSpace: '#141823',
   },
   breakpoints: {

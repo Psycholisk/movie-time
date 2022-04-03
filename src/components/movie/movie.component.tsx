@@ -9,6 +9,7 @@ const Container = styled.article`
   height: 370px;
   position: relative;
   cursor: pointer;
+  overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
     0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 `
@@ -109,7 +110,88 @@ const IconAttribute = styled.span`
   }
 `
 
-const Movie = (): JSX.Element => (
+const FavoriteRibon = styled.div<{ isActive: boolean }>`
+  --bgcolor: ${(p) => (p.isActive ? p.theme.colors.complementary : 'rgba(20, 24, 35, 0.6)')};
+  width: 30px;
+  height: ${(p) => (p.isActive ? '50px' : '35px')};
+  position: absolute;
+  top: 0;
+  right: 4px;
+  background: var(--bgcolor);
+  transition: height 0.6s, background 0.4s;
+  z-index: 2;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    border-bottom: 13px solid transparent;
+    transition: border-color 0.4s;
+  }
+  &::before {
+    left: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid var(--bgcolor);
+  }
+  &::after {
+    right: 0;
+    border-right: 15px solid transparent;
+    border-left: 15px solid var(--bgcolor);
+  }
+  ${(p) =>
+    !p.isActive
+      ? `
+  @media (pointer: fine) {
+    &:hover {
+      background: rgba(214, 164, 25, 0.6);
+
+      &::before {
+        border-right: 15px solid rgba(214, 164, 25, 0.6);
+      }
+      &::after {
+        border-left: 15px solid rgba(214, 164, 25, 0.6);
+      }
+    }
+  }
+  `
+      : ''};
+`
+
+const FavoriteIcon = styled.div<{ isActive: boolean }>`
+  position: absolute;
+  top: calc(50% - 6px);
+  left: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: ${(p) => p.theme.colors.dimmedWhite};
+  }
+  &::before {
+    left: 0;
+    top: calc(50% - 1px);
+    height: 2px;
+    width: 100%;
+  }
+  &::after {
+    top: 0;
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 100%;
+    ${(p) => (p.isActive ? 'display: none;' : '')}
+  }
+`
+
+interface MovieProps {
+  id: string
+  isFavorite?: boolean
+  onFavoriteClick?: (id: string) => void
+}
+
+const Movie = ({ id, isFavorite, onFavoriteClick }: MovieProps): JSX.Element => (
   <Container>
     <ImageFrame>
       <CoverImage src="../../images/inventing-anna.jpg" data-testId="movie-poster" />
@@ -128,7 +210,17 @@ const Movie = (): JSX.Element => (
       </Attributes>
       <Title data-testId="movie-title">Inventing Anna</Title>
     </Content>
+    {Boolean(onFavoriteClick) && (
+      <FavoriteRibon isActive={!!isFavorite} onClick={() => onFavoriteClick!(id)}>
+        <FavoriteIcon isActive={!!isFavorite} />
+      </FavoriteRibon>
+    )}
   </Container>
 )
+
+Movie.defaultProps = {
+  isFavorite: false,
+  onFavoriteClick: undefined,
+}
 
 export default Movie
