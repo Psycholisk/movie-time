@@ -13,8 +13,9 @@ export const defaultTheme: DefaultTheme = {
     bold: 700,
   },
   colors: {
-    primaryText: 'white',
-    secondaryText: '#737782',
+    primaryText: '#e4f0ff',
+    secondaryText: '#8c9097',
+    complementary: '#D6A419',
     dimmedWhite: '#5F636D',
     negativeSpace: '#141823',
   },

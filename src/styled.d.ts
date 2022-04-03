@@ -17,6 +17,7 @@ declare module 'styled-components' {
       primaryText: string
       secondaryText: string
       dimmedWhite: string
+      complementary: string
       [key: string]: string
     }
     breakpoints: {

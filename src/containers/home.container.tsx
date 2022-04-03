@@ -1,5 +1,7 @@
 import React from 'react'
 
-const HomeContainer = (): JSX.Element => <div>Home Content</div>
+import { Banner } from '../components'
+
+const HomeContainer = (): JSX.Element => <Banner />
 
 export default HomeContainer
