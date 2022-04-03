@@ -5,17 +5,20 @@ import { CenteredContent } from '../../styles/styled-elements'
 
 const Container = styled(CenteredContent)`
   padding-top: ${(props) => props.theme.space(12.5)};
-  padding-bottom: ${(props) => props.theme.space(5)};
+  padding-bottom: ${(props) => props.theme.space(8)};
   position: relative;
 
   @media (max-width: ${(props) => props.theme.breakpoints.laptop}px) {
     padding-top: ${(props) => props.theme.space(10)};
+    padding-bottom: ${(props) => props.theme.space(6)};
   }
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}px) {
     padding-top: ${(props) => props.theme.space(8)};
+    padding-bottom: ${(props) => props.theme.space(5)};
   }
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}px) {
     padding-top: ${(props) => props.theme.space(6)};
+    padding-bottom: ${(props) => props.theme.space(4)};
   }
 `
 
@@ -28,7 +31,7 @@ const Pattern = styled.div`
   max-height: 800px;
   position: absolute;
   right: 0;
-  top: calc(50% + 50px);
+  top: calc(50% + 30px);
   transform: translateY(-50%);
   overflow: hidden;
   &::before {
