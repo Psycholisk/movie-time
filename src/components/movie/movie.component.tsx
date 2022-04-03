@@ -54,7 +54,7 @@ const Content = styled.div`
     background-image: linear-gradient(rgba(0, 0, 0, 0.2) 19%, black);
   }
 
-  @media (hover: hover) {
+  @media (pointer: fine) {
     &:hover {
       opacity: 0;
     }

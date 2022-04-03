@@ -54,7 +54,7 @@ const SearchButton = styled.div`
     width: 22px;
   }
 
-  @media (hover: hover) {
+  @media (pointer: fine) {
     &:hover {
       background-color: rgba(255, 255, 255, 0.09);
     }
