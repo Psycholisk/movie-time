@@ -5,9 +5,7 @@ import { MovieInterface } from '../../types/movie.types'
 // Aspect ratio 1.48 | 250x370
 const Container = styled.article`
   width: 100%;
-  min-width: 200px;
-  max-width: 250px;
-  height: 370px;
+  aspect-ratio: 2 / 3;
   position: relative;
   cursor: pointer;
   overflow: hidden;
@@ -27,8 +25,8 @@ const ImageFrame = styled.div`
 
 const CoverImage = styled.img`
   display: block;
-  height: 100%;
-  width: auto;
+  width: 100%;
+  height: auto;
 `
 
 const Content = styled.div`
