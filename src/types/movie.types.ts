@@ -1,7 +1,8 @@
-export interface Movie {
-  id: string
-  image: string
-  duration: string
+export interface MovieInterface {
+  id: number
+  title: string
+  image?: string
+  releaseDate: string
   rating: string
-  rated: string
+  language: string
 }

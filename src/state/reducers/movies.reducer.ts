@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { Movie } from '../../types/movie.types'
+import { MovieInterface } from '../../types/movie.types'
 
 export interface MoviesStore {
-  movies: Set<Movie>
-  favoriteMovies: Set<Movie>
+  movies: Array<MovieInterface>
+  favoriteMovies: Set<MovieInterface>
 }
 
-const initialState: MoviesStore = { movies: new Set(), favoriteMovies: new Set() }
+const initialState: MoviesStore = { movies: [], favoriteMovies: new Set() }
 
 const moviesSlice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
     addMovies: (state, action) => {
-      action.payload.forEach((movie: Movie) => state.movies.add(movie))
+      state.movies.concat(action.payload)
     },
     favorMovie: (state, action) => {
       state.favoriteMovies.add(action.payload)

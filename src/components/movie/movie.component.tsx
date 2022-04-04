@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { MovieInterface } from '../../types/movie.types'
 
 // Aspect ratio 1.48 | 250x370
 const Container = styled.article`
@@ -71,7 +72,7 @@ const Title = styled.h1`
   grid-row-end: 7;
 `
 
-const RatedTag = styled.span`
+const LanguageTab = styled.span`
   background-color: ${(p) => p.theme.colors.complementary};
   border-radius: 16px;
   font-size: 1.2rem;
@@ -185,30 +186,42 @@ const FavoriteIcon = styled.div<{ isActive: boolean }>`
   }
 `
 
-interface MovieProps {
-  id: string
+interface MovieProps extends MovieInterface {
   isFavorite?: boolean
-  onFavoriteClick?: (id: string) => void
+  onFavoriteClick?: (id: MovieInterface['id']) => void
 }
 
-const Movie = ({ id, isFavorite, onFavoriteClick }: MovieProps): JSX.Element => (
+const Movie = ({
+  id,
+  title,
+  language,
+  rating,
+  releaseDate,
+  image,
+  isFavorite,
+  onFavoriteClick,
+}: MovieProps): JSX.Element => (
   <Container>
     <ImageFrame>
-      <CoverImage src="../../images/inventing-anna.jpg" data-testId="movie-poster" />
+      <CoverImage src={image} data-testId="movie-poster" />
     </ImageFrame>
     <Content>
-      <RatedTag>TV-MA</RatedTag>
+      {language && <LanguageTab>{language}</LanguageTab>}
       <Attributes>
-        <IconAttribute>
-          <img alt="Hourglass" src="../../images/hourglass-icon.svg" />
-          136 min
-        </IconAttribute>
-        <IconAttribute data-testId="movie-imdb-rating">
-          <img alt="Hourglass" src="../../images/star-icon.svg" />
-          6.9
-        </IconAttribute>
+        {releaseDate && (
+          <IconAttribute>
+            <img alt="Release Date" src="../../images/calendar-icon-1.svg" />
+            {releaseDate}
+          </IconAttribute>
+        )}
+        {rating && (
+          <IconAttribute data-testId="movie-imdb-rating">
+            <img alt="Hourglass" src="../../images/star-icon.svg" />
+            {rating}
+          </IconAttribute>
+        )}
       </Attributes>
-      <Title data-testId="movie-title">Inventing Anna</Title>
+      <Title data-testId="movie-title">{title}</Title>
     </Content>
     {Boolean(onFavoriteClick) && (
       <FavoriteRibon isActive={!!isFavorite} onClick={() => onFavoriteClick!(id)}>

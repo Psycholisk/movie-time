@@ -27,6 +27,9 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-one-expression-per-line": "off",
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": "off",
     "import/extensions": [
       "error",
       "always",
@@ -45,14 +48,12 @@
         "allowConciseArrowFunctionExpressionsStartingWithVoid": true
       }
     ],
+    "@typescript-eslint/no-non-null-assertion": "off",
     "no-shadow": "off",
     "comma-dangle": "off",
     "linebreak-style": "off",
     "object-curly-newline": "off",
-    "react/require-default-props": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
     "import/prefer-default-export": "off",
-    "react/function-component-definition": "off",
     "semi": "off",
     "jsx-quotes": ["error", "prefer-double"]
   }
