@@ -2,13 +2,22 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { MovieInterface } from '../../types/movie.types'
 
+interface RawMovie {
+  id: number
+  title: string
+  poster_path?: string
+  release_date: string
+  vote_average: string
+  original_language: string
+}
+
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async (): Promise<MovieInterface[]> => {
   const { data: movies } = await axios.get(
     'https://api.themoviedb.org/3/discover/movie?api_key=272edc99e1c3d897c95013477f434620'
   )
 
   if (movies) {
-    const normalizedMovies = movies.results.map((rawMovie: any) => ({
+    const normalizedMovies = movies.results.map((rawMovie: RawMovie) => ({
       id: rawMovie.id,
       title: rawMovie.title,
       image: rawMovie.poster_path,
