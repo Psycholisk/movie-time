@@ -84,6 +84,7 @@ const LanguageTab = styled.span`
   grid-row-end: 3;
   margin-right: auto;
   z-index: 1;
+  text-transform: uppercase;
 `
 
 const Attributes = styled.div`
@@ -203,14 +204,14 @@ const Movie = ({
 }: MovieProps): JSX.Element => (
   <Container>
     <ImageFrame>
-      <CoverImage src={image} data-testId="movie-poster" />
+      <CoverImage src={`https://image.tmdb.org/t/p/w500/${image}`} data-testId="movie-poster" />
     </ImageFrame>
     <Content>
       {language && <LanguageTab>{language}</LanguageTab>}
       <Attributes>
         {releaseDate && (
           <IconAttribute>
-            <img alt="Release Date" src="../../images/calendar-icon-1.svg" />
+            <img alt="Release Date" src="../../images/calendar-icon-2.svg" />
             {releaseDate}
           </IconAttribute>
         )}
