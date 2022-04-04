@@ -34,6 +34,7 @@ const Pattern = styled.div`
   top: calc(50% + 30px);
   transform: translateY(-50%);
   overflow: hidden;
+  pointer-events: none;
   &::before {
     content: '';
     width: 70%;
