@@ -19,7 +19,7 @@ export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
   async (page?: number): Promise<Omit<PaginatedList<MovieInterface>, 'isLoading'>> => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=272edc99e1c3d897c95013477f434620&page=${page || 1}`,
+      `${process.env.REACT_APP_API_HOST}discover/movie?api_key=${process.env.REACT_APP_API_KEY}&page=${page || 1}`,
       { cancelToken: source.token }
     )
     let normalizedMovies = []

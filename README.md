@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Variables
+
+Before you go ahead and run the app on your machine:
+
+1. Copy your `.env.local.example` into `.env.local` or simply run the following command
+
+```
+cp .env.example .env
+```
+
+2. Add the missing env variables' values
+
 ## Available Scripts
 
 In the project directory, you can run:
