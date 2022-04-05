@@ -12,6 +12,7 @@ const BaseStyles = createGlobalStyle`
 
 html {
   height: 100%;
+  scroll-behavior: auto;
   font-size: 10px;
 }
 
@@ -20,7 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.4rem;
   font-family: ${(p) => p.theme.fonts.primary};
-  height: 100%;
+  min-height: 100%;
   min-width: 320px;
   background-color: ${(p) => p.theme.colors.negativeSpace};
   color: ${(p) => p.theme.colors.primaryText};
