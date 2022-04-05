@@ -68,5 +68,8 @@ img {
   border: 0;
   outline: 0;
 }
+
+-webkit-tap-highlight-color: transparent;
+
 `
 export default BaseStyles
