@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Banner, Movie, Section } from '../components'
+import { Banner, Movie, Section, Spinner } from '../components'
 import { fetchMovies } from '../state/actions/movies.actions'
 import { RootState } from '../state/store'
 import { ListingContainer } from '../styles/styled-elements'
@@ -53,6 +53,7 @@ const HomeContainer = (): JSX.Element => {
             />
           ))}
         </ListingContainer>
+        <Spinner />
       </Section>
     </>
   )
