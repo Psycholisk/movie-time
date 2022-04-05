@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { MovieInterface } from '../../types/movie.types'
 
@@ -21,12 +21,15 @@ const ImageFrame = styled.div`
   align-items: center;
   overflow: hidden;
   position: relative;
+  background: url('../../../images/poster-placeholder.jpg') 50% 50% no-repeat;
+  background-size: cover;
 `
 
 const CoverImage = styled.img`
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 `
 
 const Content = styled.div`
@@ -201,36 +204,54 @@ const Movie = ({
   isFavorite,
   onFavoriteClick,
   elementRef,
-}: MovieProps): JSX.Element => (
-  <Container ref={elementRef}>
-    <ImageFrame>
-      <CoverImage src={`https://image.tmdb.org/t/p/w500/${image}`} data-testid="movie-poster" />
-    </ImageFrame>
-    <Content>
-      {language && <LanguageTab>{language}</LanguageTab>}
-      <Attributes>
-        {releaseDate && (
-          <IconAttribute>
-            <img alt="Release Date" src="../../images/calendar-icon-2.svg" />
-            {releaseDate}
-          </IconAttribute>
+}: MovieProps): JSX.Element => {
+  const [isValidImage, setIsValidImage] = useState(true)
+
+  const handleImageError = (): void => {
+    setIsValidImage(false)
+  }
+
+  useEffect(() => {
+    setIsValidImage(true)
+  }, [image])
+
+  return (
+    <Container ref={elementRef}>
+      <ImageFrame>
+        {image && isValidImage && (
+          <CoverImage
+            src={`https://image.tmdb.org/t/p/w500/${image}`}
+            data-testid="movie-poster"
+            onError={handleImageError}
+          />
         )}
-        {rating && (
-          <IconAttribute data-testid="movie-imdb-rating">
-            <img alt="Hourglass" src="../../images/star-icon.svg" />
-            {rating}
-          </IconAttribute>
-        )}
-      </Attributes>
-      <Title data-testid="movie-title">{title}</Title>
-    </Content>
-    {Boolean(onFavoriteClick) && (
-      <FavoriteRibon isActive={!!isFavorite} onClick={() => onFavoriteClick!(id)}>
-        <FavoriteIcon isActive={!!isFavorite} />
-      </FavoriteRibon>
-    )}
-  </Container>
-)
+      </ImageFrame>
+      <Content>
+        {language && <LanguageTab>{language}</LanguageTab>}
+        <Attributes>
+          {releaseDate && (
+            <IconAttribute>
+              <img alt="Release Date" src="../../images/calendar-icon-2.svg" />
+              {releaseDate}
+            </IconAttribute>
+          )}
+          {rating && (
+            <IconAttribute data-testid="movie-imdb-rating">
+              <img alt="Hourglass" src="../../images/star-icon.svg" />
+              {rating}
+            </IconAttribute>
+          )}
+        </Attributes>
+        <Title data-testid="movie-title">{title}</Title>
+      </Content>
+      {Boolean(onFavoriteClick) && (
+        <FavoriteRibon isActive={!!isFavorite} onClick={() => onFavoriteClick!(id)}>
+          <FavoriteIcon isActive={!!isFavorite} />
+        </FavoriteRibon>
+      )}
+    </Container>
+  )
+}
 
 Movie.defaultProps = {
   isFavorite: false,
