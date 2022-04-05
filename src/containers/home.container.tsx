@@ -53,7 +53,7 @@ const HomeContainer = (): JSX.Element => {
             />
           ))}
         </ListingContainer>
-        <Spinner />
+        {isLoading && <Spinner />}
       </Section>
     </>
   )
