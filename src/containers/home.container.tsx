@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Banner, Movie, Section } from '../components'
@@ -8,10 +8,25 @@ import { ListingContainer } from '../styles/styled-elements'
 import { MovieInterface } from '../types/movie.types'
 
 const HomeContainer = (): JSX.Element => {
-  const movies = useSelector((state: RootState) => state.movieStore.movies)
+  const { entries: movies, isLoading, page, hasMore } = useSelector((state: RootState) => state.movieStore.movies)
   const dispatch = useDispatch()
 
   const [favorites, setFavorites] = useState<{ [key: MovieInterface['id']]: boolean }>({})
+
+  const observer = useRef<IntersectionObserver>()
+  const lastMovieRef = useCallback(
+    (element) => {
+      if (isLoading) return
+      if (observer.current) observer.current.disconnect()
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore && !isLoading) {
+          dispatch(fetchMovies(page + 1))
+        }
+      })
+      if (element) observer?.current?.observe(element)
+    },
+    [dispatch, isLoading]
+  )
 
   useEffect(() => {
     dispatch(fetchMovies())
@@ -23,14 +38,19 @@ const HomeContainer = (): JSX.Element => {
     },
     [favorites]
   )
-
   return (
     <>
       <Banner />
       <Section title="Popular Movies">
         <ListingContainer>
-          {movies.map((movie: MovieInterface) => (
-            <Movie key={movie.id} isFavorite={!!favorites[movie.id]} onFavoriteClick={handleFavorite} {...movie} />
+          {movies.map((movie: MovieInterface, index: number) => (
+            <Movie
+              elementRef={index + 1 === movies.length ? lastMovieRef : undefined}
+              key={movie.id}
+              isFavorite={!!favorites[movie.id]}
+              onFavoriteClick={handleFavorite}
+              {...movie}
+            />
           ))}
         </ListingContainer>
       </Section>

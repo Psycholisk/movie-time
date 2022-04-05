@@ -54,6 +54,7 @@
     "linebreak-style": "off",
     "object-curly-newline": "off",
     "import/prefer-default-export": "off",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
     "semi": "off",
     "jsx-quotes": ["error", "prefer-double"]
   }

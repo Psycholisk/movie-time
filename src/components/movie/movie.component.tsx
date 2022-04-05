@@ -188,6 +188,7 @@ const FavoriteIcon = styled.div<{ isActive: boolean }>`
 interface MovieProps extends MovieInterface {
   isFavorite?: boolean
   onFavoriteClick?: (id: MovieInterface['id']) => void
+  elementRef?: ((instance: HTMLElement | null) => void) | React.RefObject<HTMLElement> | null | undefined
 }
 
 const Movie = ({
@@ -199,10 +200,11 @@ const Movie = ({
   image,
   isFavorite,
   onFavoriteClick,
+  elementRef,
 }: MovieProps): JSX.Element => (
-  <Container>
+  <Container ref={elementRef}>
     <ImageFrame>
-      <CoverImage src={`https://image.tmdb.org/t/p/w500/${image}`} data-testId="movie-poster" />
+      <CoverImage src={`https://image.tmdb.org/t/p/w500/${image}`} data-testid="movie-poster" />
     </ImageFrame>
     <Content>
       {language && <LanguageTab>{language}</LanguageTab>}
@@ -214,13 +216,13 @@ const Movie = ({
           </IconAttribute>
         )}
         {rating && (
-          <IconAttribute data-testId="movie-imdb-rating">
+          <IconAttribute data-testid="movie-imdb-rating">
             <img alt="Hourglass" src="../../images/star-icon.svg" />
             {rating}
           </IconAttribute>
         )}
       </Attributes>
-      <Title data-testId="movie-title">{title}</Title>
+      <Title data-testid="movie-title">{title}</Title>
     </Content>
     {Boolean(onFavoriteClick) && (
       <FavoriteRibon isActive={!!isFavorite} onClick={() => onFavoriteClick!(id)}>

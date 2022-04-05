@@ -82,7 +82,7 @@ const Header = (): JSX.Element => (
       <Logo to="/" title="MovieTime">
         MovieTime
       </Logo>
-      <SearchButton data-testId="search-button">
+      <SearchButton data-testid="search-button">
         <img alt="search" src="../../images/loop-icon.svg" />
       </SearchButton>
     </ContentWrapper>
