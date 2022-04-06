@@ -1,17 +1,17 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Banner, Movie, Section, Slider, Spinner } from '../components'
 import { fetchMovies } from '../state/actions/movies.actions'
+import { toggleFavoriteMovie } from '../state/reducers/movies.reducer'
 import { RootState } from '../state/store'
 import { ListingContainer } from '../styles/styled-elements'
 import { MovieInterface } from '../types/movie.types'
 
 const HomeContainer = (): JSX.Element => {
   const { entries: movies, isLoading, page, hasMore } = useSelector((state: RootState) => state.movieStore.movies)
+  const favorites = useSelector((state: RootState) => state.movieStore.favoriteMovies)
   const dispatch = useDispatch()
-
-  const [favorites, setFavorites] = useState<{ [key: MovieInterface['id']]: boolean }>({})
 
   const popularMoviesRef = useRef<HTMLDivElement>(null)
 
@@ -36,9 +36,9 @@ const HomeContainer = (): JSX.Element => {
 
   const handleFavorite = useCallback(
     (id: MovieInterface['id']) => {
-      setFavorites({ ...favorites, [id]: !favorites[id] })
+      dispatch(toggleFavoriteMovie(id))
     },
-    [favorites]
+    [dispatch]
   )
 
   const handleMyListPlaceholderClick = (): void => {

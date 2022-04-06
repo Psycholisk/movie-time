@@ -37,12 +37,12 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: ${(props) => props.theme.space(3)};
 `
 
 const Title = styled.h2`
   font-size: 3rem;
   display: block;
-  padding-bottom: ${(props) => props.theme.space(3)};
 
   @media (max-width: ${(props) => props.theme.breakpoints.laptop}px) {
     font-size: 2.6rem;
