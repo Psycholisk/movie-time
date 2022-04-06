@@ -8,6 +8,7 @@ const BaseStyles = createGlobalStyle`
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -70,7 +71,6 @@ img, button {
   outline: 0;
 }
 
--webkit-tap-highlight-color: transparent;
 
 `
 export default BaseStyles
