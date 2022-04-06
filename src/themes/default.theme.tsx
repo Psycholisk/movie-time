@@ -18,6 +18,7 @@ export const defaultTheme: DefaultTheme = {
     complementary: '#D6A419',
     dimmedWhite: '#bec6cf',
     negativeSpace: '#141823',
+    negativeSpaceContrast: '#1f2430',
   },
   breakpoints: {
     mobile: 576,

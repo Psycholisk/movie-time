@@ -13,6 +13,8 @@ const HomeContainer = (): JSX.Element => {
 
   const [favorites, setFavorites] = useState<{ [key: MovieInterface['id']]: boolean }>({})
 
+  const popularMoviesRef = useRef<HTMLDivElement>(null)
+
   const observer = useRef<IntersectionObserver>()
   const lastMovieRef = useCallback(
     (element) => {
@@ -38,15 +40,22 @@ const HomeContainer = (): JSX.Element => {
     },
     [favorites]
   )
+
+  const handleMyListPlaceholderClick = (): void => {
+    if (popularMoviesRef?.current) {
+      const scrollValue = popularMoviesRef.current.getBoundingClientRect().top + window.pageYOffset - 100
+      window.scrollTo({ behavior: 'smooth', top: scrollValue })
+    }
+  }
   const favoriteMovies = useMemo(() => movies.filter((movie) => !!favorites[movie.id]), [favorites])
   return (
     <>
       <Banner />
       <Section title="My Movies">
-        <Slider movies={favoriteMovies} />
+        <Slider movies={favoriteMovies} onPlaceholderClick={handleMyListPlaceholderClick} />
       </Section>
       <Section title="Popular Movies">
-        <ListingContainer>
+        <ListingContainer ref={popularMoviesRef}>
           {movies.map((movie: MovieInterface, index: number) => (
             <Movie
               elementRef={index + 1 === movies.length ? lastMovieRef : undefined}

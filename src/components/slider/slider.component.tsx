@@ -93,11 +93,52 @@ const RightArrow = styled(Arrow)`
   }
 `
 
+const PlaceholderSlide = styled.div`
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  position: relative;
+  cursor: pointer;
+  background: ${(p) => p.theme.colors.negativeSpaceContrast};
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: ${(p) => p.theme.colors.complementary};
+    border-radius: 3px;
+  }
+
+  &::before {
+    width: 40px;
+    height: 2px;
+    top: calc(50% - 1px);
+    left: calc(50% - 20px);
+  }
+  &::after {
+    height: 40px;
+    width: 2px;
+    left: calc(50% - 1px);
+    top: calc(50% - 20px);
+  }
+`
+
+const PlaceholderText = styled.span`
+  color: ${(p) => p.theme.colors.primaryText};
+  font-weight: ${(p) => p.theme.fontWeights.medium};
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: calc(50% + 60px);
+  left: 50%;
+  transform: translateX(-50%);
+`
+
 interface SliderProps {
   movies: Array<MovieInterface>
+  onPlaceholderClick: () => void
 }
 
-const Slider = ({ movies }: SliderProps): JSX.Element => {
+const Slider = ({ movies, onPlaceholderClick }: SliderProps): JSX.Element => {
   const [isSliderInitialized, setIsSliderInitialized] = useState(false)
   const sliderRef = useRef<Slick | null>(null)
 
@@ -153,13 +194,21 @@ const Slider = ({ movies }: SliderProps): JSX.Element => {
   return (
     <Container>
       <SlickSlider {...settings} ref={sliderRef}>
-        {movies.map((movie: MovieInterface) => (
-          <Slide key={`${movie.id}-favorite`}>
-            <Movie key={movie.id} {...movie} />
+        {movies.length ? (
+          movies.map((movie: MovieInterface) => (
+            <Slide key={`${movie.id}-favorite`}>
+              <Movie key={movie.id} {...movie} />
+            </Slide>
+          ))
+        ) : (
+          <Slide>
+            <PlaceholderSlide onClick={onPlaceholderClick}>
+              <PlaceholderText>Add to list</PlaceholderText>
+            </PlaceholderSlide>
           </Slide>
-        ))}
+        )}
       </SlickSlider>
-      {isSliderInitialized && (
+      {isSliderInitialized && movies.length && (
         <>
           <LeftArrow onClick={() => sliderRef?.current?.slickPrev()} />
           <RightArrow onClick={() => sliderRef?.current?.slickNext()} />

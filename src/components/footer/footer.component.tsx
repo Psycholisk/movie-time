@@ -22,7 +22,7 @@ const FooterContainer = styled(CenteredContent).attrs({ as: 'footer' })`
   width: 100%;
   height: 100px;
   align-items: center;
-  background-color: #1f2430;
+  background-color: ${(p) => p.theme.colors.negativeSpaceContrast};
   position: absolute;
   bottom: 0;
 
