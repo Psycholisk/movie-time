@@ -194,17 +194,8 @@ interface MovieProps extends MovieInterface {
   elementRef?: ((instance: HTMLElement | null) => void) | React.RefObject<HTMLElement> | null | undefined
 }
 
-const Movie = ({
-  id,
-  title,
-  language,
-  rating,
-  releaseDate,
-  image,
-  isFavorite,
-  onFavoriteClick,
-  elementRef,
-}: MovieProps): JSX.Element => {
+const Movie = (props: MovieProps): JSX.Element => {
+  const { id, title, language, rating, releaseDate, image, isFavorite, onFavoriteClick, elementRef } = props
   const [isValidImage, setIsValidImage] = useState(true)
 
   const handleImageError = (): void => {

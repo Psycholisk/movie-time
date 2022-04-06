@@ -65,7 +65,7 @@ table {
 
 input,
 select,
-img {
+img, button {
   border: 0;
   outline: 0;
 }
