@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import styled, { useTheme } from 'styled-components'
+import styled from 'styled-components'
 import Slick from 'react-slick'
 
 import 'slick-carousel/slick/slick.css'
@@ -17,6 +17,9 @@ const SlickSlider = styled(Slick)`
   overflow: hidden;
   .slick-list {
     margin: 0 -${(p) => p.theme.space(2)};
+  }
+  .slick-track {
+    margin-left: 0;
   }
 `
 
@@ -97,55 +100,54 @@ interface SliderProps {
 const Slider = ({ movies }: SliderProps): JSX.Element => {
   const [isSliderInitialized, setIsSliderInitialized] = useState(false)
   const sliderRef = useRef<Slick | null>(null)
-  const theme = useTheme()
 
   const settings = {
     accessibility: true,
-    infinite: true,
+    infinite: movies.length > 5,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
     draggable: false,
+    onReInit: () => setIsSliderInitialized(movies.length > 5),
     responsive: [
       {
         breakpoint: 1577,
         settings: {
+          infinite: movies.length > 4,
           slidesToShow: 4,
           slidesToScroll: 4,
+          onReInit: () => setIsSliderInitialized(movies.length > 4),
         },
       },
       {
         breakpoint: 1175,
         settings: {
+          infinite: movies.length > 3,
           slidesToShow: 3,
           slidesToScroll: 3,
+          onReInit: () => setIsSliderInitialized(movies.length > 3),
         },
       },
       {
         breakpoint: 869,
+
         settings: {
+          infinite: movies.length > 2,
           slidesToShow: 2,
           slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: theme.breakpoints.tablet,
-        settings: {
-          centerMode: true,
-          slidesToShow: 2,
-          slidesToScroll: 3,
+          onReInit: () => setIsSliderInitialized(movies.length > 2),
         },
       },
       {
         breakpoint: 563,
         settings: {
+          infinite: movies.length > 1,
+          centerMode: true,
           slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
     ],
-    onInit: () => setIsSliderInitialized(true),
-    // onInit: () => setIsSliderInitialized(true),
   }
 
   return (

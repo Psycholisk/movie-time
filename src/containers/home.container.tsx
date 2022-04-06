@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Banner, Movie, Section, Slider, Spinner } from '../components'
@@ -38,11 +38,12 @@ const HomeContainer = (): JSX.Element => {
     },
     [favorites]
   )
+  const favoriteMovies = useMemo(() => movies.filter((movie) => !!favorites[movie.id]), [favorites])
   return (
     <>
       <Banner />
       <Section title="My Movies">
-        <Slider movies={movies.slice(0, 12)} />
+        <Slider movies={favoriteMovies} />
       </Section>
       <Section title="Popular Movies">
         <ListingContainer>
