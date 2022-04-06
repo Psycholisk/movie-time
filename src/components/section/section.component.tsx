@@ -1,9 +1,12 @@
 import React, { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { CenteredContent } from '../../styles/styled-elements'
 
 interface SectionProps {
   title?: string | null
+  link?: string
+  linkLabel?: string
   children: ReactNode
 }
 
@@ -30,6 +33,12 @@ const ContentWrapper = styled.div`
   max-width: 1600px;
 `
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 const Title = styled.h2`
   font-size: 3rem;
   display: block;
@@ -46,10 +55,21 @@ const Title = styled.h2`
   }
 `
 
-const Section = ({ title, children }: SectionProps): JSX.Element => (
+const LinkTo = styled(Link)`
+  color: ${(p) => p.theme.colors.complementary};
+`
+
+const Section = ({ title, children, link, linkLabel }: SectionProps): JSX.Element => (
   <Container>
     <ContentWrapper>
-      {title && <Title>{title}</Title>}
+      <Header>
+        {title && <Title>{title}</Title>}
+        {link && linkLabel && (
+          <LinkTo to={link} title={linkLabel}>
+            {linkLabel}
+          </LinkTo>
+        )}
+      </Header>
       {children}
     </ContentWrapper>
   </Container>

@@ -51,7 +51,7 @@ const HomeContainer = (): JSX.Element => {
   return (
     <>
       <Banner />
-      <Section title="My Movies">
+      <Section title="My Movies" link={favoriteMovies.length ? '/my-movies' : undefined} linkLabel="View All">
         <Slider movies={favoriteMovies} onPlaceholderClick={handleMyListPlaceholderClick} />
       </Section>
       <Section title="Popular Movies">
