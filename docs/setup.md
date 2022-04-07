@@ -40,13 +40,13 @@ npm run start
 
 ## Pre-commit Hook
 
-In order to keep the code style and standards consistant, a pre-commit hook has been setup using `Husky` to run the following commands before any commit:
+In order to keep the code style and standards consistent, a pre-commit hook has been setup using `Husky` to run the following commands before any commit:
 
 1. npm run prettier:check
 2. npm run lint
 3. npm run test:ci
 
 If any of the above fails, the commit will fail.
-Refer to the [pre-commit configuration file] (/.husky/pre-commit) to customise it.
+Refer to the [pre-commit configuration file](/.husky/pre-commit) to customise it.
 
 **In order to run the tests and other commands manually, refer to the [Available Scripts](/README.md#available-scripts)**
