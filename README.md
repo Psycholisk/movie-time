@@ -10,7 +10,7 @@ The documentation for this project is location in the `/docs` directory.
 
 - [Setup Guide](/docs/setup.md)
 
-- [Dev Guide](/docs/guide.md)
+- [Development Guide](/docs/dev-guide.md)
 
 - [Todo's List](/docs/todo.md)
 
