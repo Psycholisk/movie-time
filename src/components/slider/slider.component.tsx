@@ -8,6 +8,11 @@ import 'slick-carousel/slick/slick-theme.css'
 import { MovieInterface } from '../../types/movie.types'
 import Movie from '../movie/movie.component'
 
+interface SliderProps {
+  movies: Array<MovieInterface>
+  onPlaceholderClick: () => void
+}
+
 const Container = styled.div`
   width: 100%;
   position: relative;
@@ -133,11 +138,6 @@ const PlaceholderText = styled.span`
   transform: translateX(-50%);
 `
 
-interface SliderProps {
-  movies: Array<MovieInterface>
-  onPlaceholderClick: () => void
-}
-
 const Slider = ({ movies, onPlaceholderClick }: SliderProps): JSX.Element => {
   const [isSliderInitialized, setIsSliderInitialized] = useState(false)
   const sliderRef = useRef<Slick | null>(null)
@@ -202,7 +202,7 @@ const Slider = ({ movies, onPlaceholderClick }: SliderProps): JSX.Element => {
           ))
         ) : (
           <Slide>
-            <PlaceholderSlide onClick={onPlaceholderClick}>
+            <PlaceholderSlide onClick={onPlaceholderClick} data-testid="placeholder-slide">
               <PlaceholderText>Add to list</PlaceholderText>
             </PlaceholderSlide>
           </Slide>

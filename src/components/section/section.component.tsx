@@ -7,6 +7,7 @@ interface SectionProps {
   title?: string | null
   link?: string
   linkLabel?: string
+  testId?: string
   children: ReactNode
 }
 
@@ -59,8 +60,8 @@ const LinkTo = styled(Link)`
   color: ${(p) => p.theme.colors.complementary};
 `
 
-const Section = ({ title, children, link, linkLabel }: SectionProps): JSX.Element => (
-  <Container>
+const Section = ({ title, children, link, linkLabel, testId }: SectionProps): JSX.Element => (
+  <Container data-testid={testId}>
     <ContentWrapper>
       <Header>
         {title && <Title>{title}</Title>}

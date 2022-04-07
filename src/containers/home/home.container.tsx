@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Banner, Movie, Section, Slider, Spinner } from '../components'
-import { fetchMovies } from '../state/actions/movies.actions'
-import { toggleFavoriteMovie } from '../state/reducers/movies.reducer'
-import { RootState } from '../state/store'
-import { ListingContainer } from '../styles/styled-elements'
-import { MovieInterface } from '../types/movie.types'
+import { Banner, Movie, Section, Slider, Spinner } from '../../components'
+import { fetchMovies } from '../../state/actions/movies.actions'
+import { toggleFavoriteMovie } from '../../state/reducers/movies.reducer'
+import { RootState } from '../../state/store'
+import { ListingContainer } from '../../styles/styled-elements'
+import { MovieInterface } from '../../types/movie.types'
 
 const HomeContainer = (): JSX.Element => {
   const { entries: movies, isLoading, page, hasMore } = useSelector((state: RootState) => state.movieStore.movies)
@@ -47,14 +47,20 @@ const HomeContainer = (): JSX.Element => {
       window.scrollTo({ behavior: 'smooth', top: scrollValue })
     }
   }
+
   const favoriteMovies = useMemo(() => movies.filter((movie) => !!favorites[movie.id]), [favorites])
+
   return (
     <>
-      <Banner />
-      <Section title="My Movies" link={favoriteMovies.length ? '/my-movies' : undefined} linkLabel="View All">
+      <Banner testId="home-banner" />
+      <Section
+        title="My Movies"
+        link={favoriteMovies.length ? '/my-movies' : undefined}
+        linkLabel="View All"
+        testId="home-my-movies">
         <Slider movies={favoriteMovies} onPlaceholderClick={handleMyListPlaceholderClick} />
       </Section>
-      <Section title="Popular Movies">
+      <Section title="Popular Movies" testId="home-popular-movies">
         <ListingContainer ref={popularMoviesRef}>
           {movies.map((movie: MovieInterface, index: number) => (
             <Movie

@@ -80,7 +80,7 @@ const Footer = (): JSX.Element => (
       <Logo to="/" title="MovieTime">
         MovieTime
       </Logo>
-      <Copyrights>Copyright © 2022 MovieTime. All Rights Reserved</Copyrights>
+      <Copyrights>Copyright © {new Date().getFullYear()} MovieTime. All Rights Reserved</Copyrights>
     </ContentWrapper>
     <BodyPadding />
   </FooterContainer>

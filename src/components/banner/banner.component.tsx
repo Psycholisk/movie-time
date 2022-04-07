@@ -115,8 +115,8 @@ const Subtitle = styled.p`
   }
 `
 
-const Banner = (): JSX.Element => (
-  <Container>
+const Banner = ({ testId }: { testId?: string }): JSX.Element => (
+  <Container data-testid={testId}>
     <ContentWrapper>
       <MainTitle>The easiest way to find movies you like.</MainTitle>
       <Seperator />

@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { MovieInterface } from '../../types/movie.types'
 
+interface MovieProps extends MovieInterface {
+  isFavorite?: boolean
+  onFavoriteClick?: (id: MovieInterface['id']) => void
+  elementRef?: ((instance: HTMLElement | null) => void) | React.RefObject<HTMLElement> | null | undefined
+}
+
 // Aspect ratio 1.48 | 250x370
 const Container = styled.article`
   width: 100%;
@@ -188,12 +194,6 @@ const FavoriteIcon = styled.div<{ isActive: boolean }>`
   }
 `
 
-interface MovieProps extends MovieInterface {
-  isFavorite?: boolean
-  onFavoriteClick?: (id: MovieInterface['id']) => void
-  elementRef?: ((instance: HTMLElement | null) => void) | React.RefObject<HTMLElement> | null | undefined
-}
-
 const Movie = (props: MovieProps): JSX.Element => {
   const { id, title, language, rating, releaseDate, image, isFavorite, onFavoriteClick, elementRef } = props
   const [isValidImage, setIsValidImage] = useState(true)
@@ -207,7 +207,7 @@ const Movie = (props: MovieProps): JSX.Element => {
   }, [image])
 
   return (
-    <Container ref={elementRef}>
+    <Container ref={elementRef} data-testid="movie-element">
       <ImageFrame>
         {image && isValidImage && (
           <CoverImage
@@ -222,7 +222,7 @@ const Movie = (props: MovieProps): JSX.Element => {
         <Attributes>
           {releaseDate && (
             <IconAttribute>
-              <img alt="Release Date" src="../../images/calendar-icon-2.svg" />
+              <img alt="Release Date" src="../../images/calendar-icon.svg" />
               {releaseDate}
             </IconAttribute>
           )}
@@ -236,7 +236,7 @@ const Movie = (props: MovieProps): JSX.Element => {
         <Title data-testid="movie-title">{title}</Title>
       </Content>
       {Boolean(onFavoriteClick) && (
-        <FavoriteRibon isActive={!!isFavorite} onClick={() => onFavoriteClick!(id)}>
+        <FavoriteRibon isActive={!!isFavorite} onClick={() => onFavoriteClick!(id)} data-testid="favorite-ribbon">
           <FavoriteIcon isActive={!!isFavorite} />
         </FavoriteRibon>
       )}
