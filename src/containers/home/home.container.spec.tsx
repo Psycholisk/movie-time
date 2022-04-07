@@ -1,16 +1,11 @@
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { TestComponentWrapper } from '../../test-helpers'
 import HomeContainer from './home.container'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const handlePlaceholderClick = (): void => {}
-
-jest.mock('axios')
-
 describe('Home Container', () => {
-  it('renders slider with correct number of movies', () => {
+  it('renders with the right blocks on the page', () => {
     const { getByTestId } = render(
       <TestComponentWrapper>
         <HomeContainer />

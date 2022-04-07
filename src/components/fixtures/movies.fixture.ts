@@ -1,3 +1,4 @@
+import { RawMovie } from '../../state/actions/movies.actions'
 import { MovieInterface } from '../../types/movie.types'
 
 export const normalizedMoviesFixture: MovieInterface[] = [
@@ -56,5 +57,64 @@ export const normalizedMoviesFixture: MovieInterface[] = [
     rating: '7.7',
     releaseDate: '2021-11-24',
     title: 'Encanto',
+  },
+]
+
+export const rawApiMovies: RawMovie[] = [
+  {
+    id: 634649,
+    original_language: 'en',
+    poster_path: '/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg',
+    release_date: '2021-12-15',
+    title: 'Spider-Man: No Way Home',
+    vote_average: '8.2',
+  },
+  {
+    id: 508947,
+    original_language: 'en',
+    poster_path: '/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg',
+    release_date: '2022-03-01',
+    title: 'Turning Red',
+    vote_average: '7.5',
+  },
+  {
+    id: 406759,
+    original_language: 'en',
+    poster_path: '/odVv1sqVs0KxBXiA8bhIBlPgalx.jpg',
+    release_date: '2022-02-03',
+    title: 'Moonfall',
+    vote_average: '6.4',
+  },
+  {
+    id: 675353,
+    original_language: 'en',
+    poster_path: '/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg',
+    release_date: '2022-03-30',
+    title: 'Sonic the Hedgehog 2',
+    vote_average: '7.8',
+  },
+  {
+    id: 696806,
+    original_language: 'en',
+    poster_path: '/wFjboE0aFZNbVOF05fzrka9Fqyx.jpg',
+    release_date: '2022-03-11',
+    title: 'The Adam Project',
+    vote_average: '7',
+  },
+  {
+    id: 760868,
+    original_language: 'sv',
+    poster_path: '/mcIYHZYwUbvhvUt8Lb5nENJ7AlX.jpg',
+    release_date: '2022-03-18',
+    title: 'Black Crab',
+    vote_average: '6.2',
+  },
+  {
+    id: 568124,
+    original_language: 'en',
+    poster_path: '/4j0PNHkMr5ax3IA8tjtxcmPU3QT.jpg',
+    release_date: '2021-11-24',
+    title: 'Encanto',
+    vote_average: '7.7',
   },
 ]

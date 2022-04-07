@@ -5,9 +5,6 @@ import { TestComponentWrapper } from '../../test-helpers'
 import Movie from './movie.component'
 import { normalizedMoviesFixture } from '../fixtures/movies.fixture'
 
-const image =
-  'https://m.media-amazon.com/images/M/MV5BM2QzMWM5OTgtZDE1MC00ZmMyLWIyODItMmQ4NjNlZGRjYTUzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_SX300.jpg'
-
 describe('Movie Component', () => {
   it('renders required movie attributes', () => {
     const { getByTestId } = render(

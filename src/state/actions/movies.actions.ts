@@ -6,7 +6,7 @@ import { PaginatedList } from '../../types/pagination.types'
 const { CancelToken } = axios
 const source = CancelToken.source()
 
-interface RawMovie {
+export interface RawMovie {
   id: number
   title: string
   poster_path?: string
